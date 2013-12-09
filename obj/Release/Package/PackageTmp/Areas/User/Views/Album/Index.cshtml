@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MyMusicList.Areas.User.Models.Album>
+@using MyMusicList.Areas.User.Models;
+@{
+    ViewBag.Title = "Index";
+
+    string searchBy = ViewBag.SearchBy;
+    string _artistName = "";
+
+    int _artistID = 0;
+
+    if (ViewBag.Artist != null)
+    {
+        _artistName = ((Artist)ViewBag.Artist).Name.ToString();
+        _artistID = ((Artist)ViewBag.Artist).ID;
+    }
+}
+
+
+<div class="row-fluid">
+    
+   
+    
+    <div class="span12">
+
+         @{
+            if (ViewBag.Artist != null)
+            {
+                    <p> <a href="Insert/@_artistID" class="btn blue" title="Add new Album for @_artistName"><i class="icon-plus"></i> Add New Album</a> </p>
+            }
+        }
+
+
+        <div class="portlet box red">
+            <div class="portlet-title">
+                <div class="caption"><i class="icon-reorder"></i>@_artistName Albums</div>
+                <div class="tools">
+                    <a class="collapse" href="javascript:;"></a>
+                    <a class="reload" href="javascript:;"></a>
+                </div>
+            </div>
+
+            <div class="portlet-body">
+                <div class="row-fluid">
+                   @{
+                       int count = 1;
+                       foreach (var m in Model)
+                       {
+                           if ((count % 6) == 0)
+                           {
+                               count = 0;
+                               @:</div><div class="row-fluid">
+                           }
+                           count++;
+                           @Html.Partial("AlbumBox", m);
+                       }
+                    @:</div> 
+                    }                
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<script src="~/include/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        //Set the active link in the main navigation
+        $(".page-sidebar .active").find(".selected").remove();
+        $(".page-sidebar .active").removeClass("active").removeClass("start");
+
+        $("#albumsLink").addClass("start").addClass("active");
+        $("#albumsLink").find("a").append("<span class='selected'></span>");
+    });
+</script>

@@ -1,0 +1,42 @@
+﻿@model MyMusicList.Areas.User.Models.Album
+
+
+<style type="text/css">
+
+    .row-fluid .span3 {
+        width:18% !important;
+        margin-left:1.5% !important;
+    }
+
+</style>
+<div class="span3">
+    <div class="item">
+        <a href="/include/img/gallery/image1.jpg" title="Photo" data-rel="fancybox-button" class="fancybox-button">
+        <div class="zoom">
+            
+                @if (Model.ImgUrl != "" && Model.ImgUrl != null)
+                {
+                    <img alt="Photo" src="@Model.ImgUrl">
+                }
+                else 
+                {
+                    <img alt="Photo" src="/include/img/gallery/rock_music.jpg">   
+                } 
+            
+                            
+            <div class="zoom-"></div>
+        </div>
+        </a>
+        <div class="details">
+            <a class="icon" href="Album/Edit/@Model.ID"><i class="icon-pencil"></i></a>
+            <a class="icon" href="Album/Delete/@Model.ID" onclick="if(!confirm('Are you sure?'))return false; else return true;"><i class="icon-remove"></i></a>    
+        </div>
+
+        <div style="padding-left:5px;">
+            <b>Artist:</b> @Model.Artist.Name <br />
+            <b>Album:</b> @Model.Name
+        </div>
+
+    </div>
+
+</div>

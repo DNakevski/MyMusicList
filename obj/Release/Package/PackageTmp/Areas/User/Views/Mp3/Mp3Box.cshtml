@@ -1,0 +1,31 @@
+﻿@model MyMusicList.Areas.User.Models.Mp3
+@using MyMusicList.Areas.User.Models;
+
+<div class="span3 pricing hover-effect">
+    <div class="pricing-head">
+        <h3>Mp3 @Model.Number <span>@Model.Number</span></h3>
+    </div>
+    <ul class="pricing-content unstyled">
+
+        @for (int i = 0; i < 10; i++)
+        {
+            if (Model.Albums.Count > i)
+            {
+                 <li><i class="icon-angle-right"></i>  @Model.Albums[i].Name</li>
+            }
+            else
+            {
+                 <li><i class="icon-angle-right"></i> N/A </li>
+            }
+        }
+    </ul>
+    <div class="pricing-footer">
+        <p></p>
+        <a href="#" class="btn red">
+            Edit <i class="icon-edit m-icon-white"></i>
+        </a>
+        <a href="#" class="btn red" onclick="if(!confirm('Are you sure?'))return false; else return true;">
+            Delete <i class="icon-remove icon-white"></i>
+        </a>   
+    </div>
+</div>

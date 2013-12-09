@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@ViewBag.Message
+
+<script src="~/include/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        //Set the active link in the main navigation
+        $(".page-sidebar .active").find(".selected").remove();
+        $(".page-sidebar .active").removeClass("active").removeClass("start");
+
+        $("#dashboardLink").addClass("start").addClass("active");
+        $("#dashboardLink").find("a").append("<span class='selected'></span>");
+    });
+</script>

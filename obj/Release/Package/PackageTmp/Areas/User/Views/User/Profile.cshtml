@@ -1,0 +1,50 @@
+﻿@model MyMusicList.Areas.User.Models.User
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+
+<div class="row-fluid">
+
+    <div class="span6">
+        <div class="portlet box red">
+
+            <div class="portlet-title">
+                <div class="caption"><i class="icon-reorder"></i>Edit Profile</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                    <a href="javascript:;" class="reload"></a>
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+               @using (Html.BeginForm("EditProfile", "User", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "validateSubmitForm" }))
+               {
+                   Html.HiddenFor(x => x.ID);
+               
+                   <div class="control-group">
+                        <label class="control-label">Name</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(x => x.Name, new { @class = "span6 m-wrap" })
+                        </div>
+                    </div> 
+               
+                   <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "span6 m-wrap" })
+                        </div>
+                    </div> 
+               
+                   <div class="form-actions">
+                        <button class="btn blue" type="submit">Submit</button>
+                    </div>
+               }
+            </div>
+
+        </div>
+    </div>
+
+</div>

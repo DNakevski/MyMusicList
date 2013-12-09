@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="MyMusicListDB-Web.config Connection String" description="MyMusicListDB Connection String used in web.config by the application to access the database." defaultValue="data source=DRAGAN-PC\SQLEXPRESS;Integrated Security=SSPI; initial catalog = MyMusicListDB" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Dragan\\documents\\visual\ studio\ 2012\\Projects\\MyMusicList\\MyMusicList\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyMusicListDB']/@connectionString" />
+  </parameter>
+</parameters>

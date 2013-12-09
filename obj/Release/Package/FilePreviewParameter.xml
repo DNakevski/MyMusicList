@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="DLE" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Dragan\\documents\\visual\ studio\ 2012\\Projects\\MyMusicList\\MyMusicList\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Dragan\\documents\\visual\ studio\ 2012\\Projects\\MyMusicList\\MyMusicList\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="MyMusicListDB-Web.config Connection String" description="" value="data source=DRAGAN-PC\SQLEXPRESS;Integrated Security=SSPI; initial catalog = MyMusicListDB" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Dragan\\documents\\visual\ studio\ 2012\\Projects\\MyMusicList\\MyMusicList\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyMusicListDB']/@connectionString" />
+  </parameter>
+</parameters>

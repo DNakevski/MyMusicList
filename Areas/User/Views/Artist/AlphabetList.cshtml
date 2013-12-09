@@ -1,0 +1,32 @@
+﻿@model List<MyMusicList.Areas.User.Models.Artist>
+@{
+    string character = Model[0].Name.Substring(0, 1).ToUpper();
+}
+
+<li class="dd-item dd-colapsed" data-id="15">
+
+    <button id="colapseButton_@character" data-action="collapse" type="button" style="display: none;" onclick="Colapse('@character')">Collapse</button>
+    <button id="expandButton_@character" data-action="expand" type="button" style="display: block;" onclick="Expand('@character')">Expand</button>
+
+    <div class="dd-handle">@character</div>
+
+    <ol class="dd-list" id="list_@character" style="display:none;">
+
+        @{
+            foreach(var artist in Model)
+            {
+                <li class="dd-item" data-id="16">
+                    <div class="dd-handle">
+                        <span style="float:left;">@artist.Name</span>
+                        <span style="float:right;">
+                            <a class="btn mini blue" href="@Url.Action("Index", "Album", new { x = artist.ID })"><i class="icon-tasks"></i> Albums</a>
+                            <a class="btn mini black" style="margin-left:3px;" href="@Url.Action("Edit", "Artist", new { id = artist.ID })"><i class="icon-edit"></i> Edit</a> 
+                            <a class="btn mini red" href="@Url.Action("Delete", "Artist", new { id = artist.ID })" onclick="if(!confirm('Are you sure?'))return false; else return true;"><i class="icon-trash"></i> Delete</a>
+                        </span>
+                    </div>
+                </li>
+            }
+        }
+
+    </ol>
+</li>

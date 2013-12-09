@@ -1,0 +1,81 @@
+﻿@model MyMusicList.Areas.User.Models.Artist
+@using MyMusicList.Areas.User.Models;
+
+@{
+    List<Genre> genres = (List<Genre>)ViewBag.Genres;
+}
+
+@{
+    ViewBag.Title = "Insert";
+    
+}
+
+<h2>Insert</h2>
+
+<div class="row-fluid">
+
+    <div class="portlet box red">
+
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-reorder"></i>Artist Info</div>
+            <div class="tools">
+                <a class="collapse" href="javascript:;"></a>
+                <a class="reload" href="javascript:;"></a>
+            </div>
+        </div>
+
+        <div class="portlet-body form">
+
+            @using (Html.BeginForm("Insert", "Artist", FormMethod.Post, new {@class="form-horizontal"})) {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+               <div class="control-group">
+                    <label class="control-label">Name</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "span2 m-wrap" })
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label">Description</label>
+                    <div class="controls">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "span6 m-wrap" })
+                    </div>
+                </div>
+                
+                 <div class="control-group">
+                    <label class="control-label">Genre</label>
+                    <div class="controls">
+                        @Html.DropDownListFor(m => m.GenreID, new SelectList(genres, "ID", "Name"), new {@class="span2 m-wrap"})
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn blue" type="submit">Submit</button>
+                    <button class="btn" type="button">Cancel</button>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>
+
+<script src="~/include/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        //Set the active link in the main navigation
+        $(".page-sidebar .active").find(".selected").remove();
+        $(".page-sidebar .active").removeClass("active").removeClass("start");
+
+        $("#artistsLink").addClass("start").addClass("active");
+        $("#artistsLink").find("a").append("<span class='selected'></span>");
+    });
+</script>
