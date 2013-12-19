@@ -1,0 +1,53 @@
+﻿@model string
+@{
+    string status = (ViewBag.Status != null) ? ViewBag.Status.ToString() : "";
+    
+    if(status != "")
+    {
+        switch(status)
+        {
+            case "insertSuccess" :
+                <div class="alert alert-success">
+                    <button class="close" data-dismiss="alert"></button>
+                    <strong>Success!</strong> The @Model has been successfully inserted.
+                </div>
+                break;
+                
+            case "insertFail" :
+                <div class="alert alert-error">
+                    <button class="close" data-dismiss="alert"></button>
+                    <strong>Error!</strong> There was an error while inserting the @Model.
+                </div>
+                break;
+                
+            case "editSuccess" :
+                <div class="alert alert-success">
+                    <button class="close" data-dismiss="alert"></button>
+                    <strong>Success!</strong> The @Model has been successfully edited.
+                </div>
+                break;
+                
+            case "editFail" :
+                <div class="alert alert-error">
+                    <button class="close" data-dismiss="alert"></button>
+                    <strong>Error!</strong> There was an error while updating the @Model.
+                </div>
+                break;
+                
+             case "deleteSuccess" :
+                <div class="alert alert-success">
+                    <button class="close" data-dismiss="alert"></button>
+                    <strong>Success!</strong> The @Model has been successfully deleted.
+                </div>
+                break;
+                
+            case "deleteFail" :
+                <div class="alert alert-error">
+                    <button class="close" data-dismiss="alert"></button>
+                    <strong>Error!</strong> There was an error while deleting the @Model.
+                </div>
+                break;
+                
+        }//End of Switch
+    }
+}

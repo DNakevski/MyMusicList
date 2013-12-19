@@ -1953,6 +1953,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\User\Views\Artist\AlphabetList.cshtml" />
+    <Content Include="Areas\User\Views\Shared\Notifications.cshtml" />
     <None Include="Properties\PublishProfiles\Dragan.pubxml" />
   </ItemGroup>
   <PropertyGroup>

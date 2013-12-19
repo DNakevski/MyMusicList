@@ -12,10 +12,12 @@ namespace MyMusicList.Areas.User.Controllers
     [AuthorizeUser]
     public class ArtistController : Controller
     {
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, string status)
         {
             if (search == null)
                 search = "";
+
+            ViewBag.Status = status;
 
             using(MyMusicListDB _db = new MyMusicListDB())
             {
@@ -64,7 +66,7 @@ namespace MyMusicList.Areas.User.Controllers
                 {
                     _db.Artists.Add(artist);
                     _db.SaveChanges();
-                    return RedirectToAction("Index"); 
+                    return RedirectToAction("Index", new { status = "insertSuccess"}); 
                         
                 }
                 else
@@ -103,7 +105,7 @@ namespace MyMusicList.Areas.User.Controllers
                 {
                     _db.Entry(artist).State = System.Data.EntityState.Modified;
                     _db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { status = "editSuccess" });
                 }
             }
             else
@@ -120,7 +122,7 @@ namespace MyMusicList.Areas.User.Controllers
                 Artist artist = _db.Artists.Where(x => x.ID == id).FirstOrDefault();
                 _db.Artists.Remove(artist);
                 _db.SaveChanges();
-                return RedirectToAction("Index"); 
+                return RedirectToAction("Index", new { status = "deleteSuccess" });
             }
         }
 

@@ -10,6 +10,8 @@
 
 <h2>Artists</h2>
 
+@Html.Partial("Notifications", "Artist")
+
 <div class="row-fluid" style="margin-bottom:10px !important;">
 
     @using (Html.BeginForm("Index", "Artist", FormMethod.Post, new { @class = "form-horizontal", @id = "searchForm" }))

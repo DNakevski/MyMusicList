@@ -98,7 +98,7 @@
     </div>
 
     <div>
-        <a href="../../Album/?x=@Model.ArtistID"> Back to List </a>
+        <a href="@Url.Action("Index", "Album", new { x = Model.ArtistID })" class="btn bigicn-only" title="Back ti list"><i class="m-icon-big-swapleft"></i></a>
     </div>
 
 </div>
