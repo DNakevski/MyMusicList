@@ -52,27 +52,44 @@ namespace MyMusicList.Areas.User.Controllers
         }
 
         [HttpPost]
-        public ActionResult Insert(Artist artist)
+        public ActionResult Insert(Artist artist, string otherGenre)
         {
-
             using (MyMusicListDB _db = new MyMusicListDB())
             {
                 List<Genre> genres = new List<Genre>();
                 genres = _db.Genres.ToList<Genre>();
-                ViewBag.Genres = genres;
 
+                //Get the Artist Genre
+                //Check if it is Other and if the new Name has been provided
+                Genre genre = genres.Where(x => x.ID == artist.GenreID).FirstOrDefault();
+                if (genre.Name == "Other" && otherGenre == "")
+                {
+                    ModelState.AddModelError("genre", "Please provide genre title!");
+                }
 
                 if (ViewData.ModelState.IsValid)
                 {
+                    //if the user has provided other genre
+                    //insert it into the database
+                    if (otherGenre != "")
+                    {
+                        Genre newGenre = new Genre();
+                        newGenre.Name = otherGenre;
+                        newGenre.Description = "Other";
+                        _db.Genres.Add(newGenre);
+                        _db.SaveChanges();
+
+                        artist.GenreID = newGenre.ID;
+                    }
+
                     _db.Artists.Add(artist);
                     _db.SaveChanges();
                     return RedirectToAction("Index", new { status = "insertSuccess"}); 
-                        
                 }
-                else
-                {
-                    return View(artist);
-                }
+
+               
+                ViewBag.Genres = genres;
+                return View(artist);
 
             }
 

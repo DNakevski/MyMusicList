@@ -13,8 +13,10 @@ namespace MyMusicList.Areas.User.Controllers
     [AuthorizeUser]
     public class GenreController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string status)
         {
+            ViewBag.Status = status;
+
             using (MyMusicListDB _db = new MyMusicListDB())
             {
                 var model = _db.Genres.ToList<Genre>();
@@ -39,7 +41,7 @@ namespace MyMusicList.Areas.User.Controllers
                     _db.Genres.Add(genre);
                     _db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { status = "insertSuccess" });
                 }
             }
             else
@@ -71,7 +73,7 @@ namespace MyMusicList.Areas.User.Controllers
                 {
                     _db.Entry(genre).State = EntityState.Modified;
                     _db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { status = "editSuccess" });
                 }
             }
             else
@@ -94,7 +96,7 @@ namespace MyMusicList.Areas.User.Controllers
                 _db.Genres.Remove(genre);
                 _db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { status = "deleteSuccess" });
             }
         }
 
