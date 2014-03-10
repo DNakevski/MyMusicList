@@ -65,10 +65,11 @@
                                 <tbody>
                                     @foreach (var artist in Model)
                                     {
+                                        string genreName = (artist.Genre == null) ? "N/A" : artist.Genre.Name;
                                         <tr>
                                             <td>@artist.Name</td>
                                             <td>@artist.Description</td>
-                                            <td>@artist.Genre.Name</td>
+                                            <td>@genreName</td>
                                             <td style="text-align:center;">@artist.Albums.Count</td>
                                             <td style="width:200px;"><a class="btn mini blue" href="Album/?x=@artist.ID" ><i class="icon-tasks"></i> Albums</a><a class="btn mini black" style="margin-left:3px;" href="Artist/Edit/@artist.ID" ><i class="icon-edit"></i> Edit</a> <a class="btn mini red" href="Artist/Delete/@artist.ID" onclick="if(!confirm('Are you sure?'))return false; else return true;"><i class="icon-trash"></i> Delete</a></td>
                                         </tr>

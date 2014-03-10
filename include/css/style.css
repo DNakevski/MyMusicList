@@ -5062,3 +5062,7 @@ Bootstrap Datepickers Restyle(in v1.2.4)
     margin-bottom: 20px;
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
+
+    .validation-summary-errors ul {
+        margin-bottom: 0px;
+    }

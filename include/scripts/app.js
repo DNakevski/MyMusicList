@@ -551,7 +551,7 @@ var App = function () {
         // wrapper function to  block element(indicate loading)
         blockUI: function (el, centerY) {
             jQuery(el).block({
-                message: '<img src="./assets/img/ajax-loading.gif" align="">',
+                message: '<img src="/include/img/ajax-loading.gif" align="">',
                 centerY: centerY != undefined ? centerY : true,
                 css: {
                     top: '10%',

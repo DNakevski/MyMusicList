@@ -89,7 +89,7 @@ namespace MyMusicList.Areas.User.Controllers
             using (MyMusicListDB _db = new MyMusicListDB())
             {
                 Genre genre = _db.Genres.Where(x => x.ID == id).FirstOrDefault();
-
+                
                 if (genre == null)
                     return RedirectToAction("Index");
 

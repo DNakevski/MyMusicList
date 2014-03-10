@@ -3,6 +3,7 @@
 
 @{
     List<Genre> genres = (List<Genre>)ViewBag.Genres;
+    genres.Add(new Genre { Name = "Other", ID = 0 });
 }
 
 @{
@@ -47,7 +48,7 @@
                  <div class="control-group">
                     <label class="control-label">Genre</label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.GenreID, new SelectList(genres, "ID", "Name"), new {@class="span2 m-wrap"})
+                        @Html.DropDownListFor(m => m.GenreID, new SelectList(genres, "ID", "Name"), "- Please select -", new {@class="span2 m-wrap"})
                     </div>
                 </div>
                 
@@ -84,6 +85,15 @@
         $("#artistsLink").addClass("start").addClass("active");
         $("#artistsLink").find("a").append("<span class='selected'></span>");
 
+        //if Other genre is selected display the additional field
+        var genreVal = $("#GenreID :selected").text();
+        if (genreVal == "Other") {
+            $("#otherGenreCG").slideDown("slow");
+            $("#otherGenre").mouseover();
+        }
+
+
+        //When Ganre is selected
         $("#GenreID").change(function () {
             var ID = $(this).val();
             var value = $("#GenreID :selected").text();

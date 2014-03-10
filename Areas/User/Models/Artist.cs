@@ -10,14 +10,13 @@ namespace MyMusicList.Areas.User.Models
     {
         public int ID { get; set; }
 
-        [Required]
+        [Required (ErrorMessage="Please insert Artist name")]
         public string Name { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        [Required]
-        public int GenreID { get; set; }
+        public int? GenreID { get; set; }
         public Genre Genre { get; set; }
         public List<Album> Albums { get; set; }
 
