@@ -103,6 +103,11 @@ namespace MyMusicList.Areas.User.Controllers
             {
                 Artist artist = _db.Artists.Where(a => a.ID == id).FirstOrDefault();
 
+                if (artist == null)
+                {
+                    return RedirectToAction("Index", new { status = "notFound" });
+                }
+
                 List<Genre> genres = new List<Genre>();
                 genres = _db.Genres.ToList<Genre>();
                 ViewBag.Genres = genres;
@@ -166,6 +171,10 @@ namespace MyMusicList.Areas.User.Controllers
             using(MyMusicListDB _db = new MyMusicListDB())
             {
                 Artist artist = _db.Artists.Where(x => x.ID == id).FirstOrDefault();
+
+                if (artist == null)
+                    return RedirectToAction("Index", new { status = "notFound" });
+
                 _db.Artists.Remove(artist);
                 _db.SaveChanges();
                 return RedirectToAction("Index", new { status = "deleteSuccess" });
