@@ -31,7 +31,7 @@ namespace MyMusicList.Areas.User.Controllers
                         albums = _db.Albums.Include("Artist").Where(a => a.ArtistID == id).ToList<Album>();
                     else
                         albums = _db.Albums.Include("Artist").Where(a => a.ArtistID == id && (a.Name.ToUpper().Contains(search.ToUpper()))).ToList<Album>();
-
+                    
                     ViewBag.SearchBy = "Artist";
                     ViewBag.Artist = _db.Artists.Where(art => art.ID == id).FirstOrDefault();
                     ViewBag.Search = search;
@@ -50,7 +50,7 @@ namespace MyMusicList.Areas.User.Controllers
                     else
                         albums = _db.Albums.Include("Artist").Where(a => a.Name.ToUpper().Contains(search.ToUpper())).ToList<Album>();
 
-                    ViewBag.SearchBuy = "All";
+                    ViewBag.SearchBy = "All";
                     ViewBag.Search = search;
 
                     return View(albums);
@@ -237,6 +237,32 @@ namespace MyMusicList.Areas.User.Controllers
             return RedirectToAction("Index", new { x = "all" });
         }
 
+        public JsonResult SearchAlbums(string term, int artistId)
+        {
+            term = term.ToLower();
+            List<Album> albums = new List<Album>();
+            using (MyMusicListDB _db = new MyMusicListDB())
+            {
+                if (artistId == 0)
+                {
+                    albums = _db.Albums.Where(x => x.Name.ToLower().Contains(term)).ToList();
+                }
+                else 
+                {
+                    albums = _db.Albums.Where(x => x.ArtistID == artistId && x.Name.ToLower().Contains(term)).ToList();
+                }
+            }
 
+            return Json(albums.Select(x => new { 
+                label = x.Name,
+                value = x.Name
+            }).ToList(), JsonRequestBehavior.AllowGet);
+
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }

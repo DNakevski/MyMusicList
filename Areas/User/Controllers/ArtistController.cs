@@ -181,5 +181,19 @@ namespace MyMusicList.Areas.User.Controllers
             }
         }
 
+        public JsonResult SearchArtists(string term)
+        {
+            term = term.ToLower();
+            List<string> result = new List<string>();
+            using (MyMusicListDB _db = new MyMusicListDB())
+            {
+                result = _db.Artists.Where(x => x.Name.ToLower().Contains(term))
+                    .Select(x => x.Name)
+                    .ToList();
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

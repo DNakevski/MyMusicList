@@ -38,3 +38,6 @@ C:\Users\Dragan\Documents\Visual Studio 2012\Projects\MyMusicList\MyMusicList\bi
 C:\Users\Dragan\Documents\Visual Studio 2012\Projects\MyMusicList\MyMusicList\bin\Glimpse.AspNet.dll
 C:\Users\Dragan\Documents\Visual Studio 2012\Projects\MyMusicList\MyMusicList\bin\Glimpse.Core.dll
 C:\Users\Dragan\Documents\Visual Studio 2012\Projects\MyMusicList\MyMusicList\bin\Glimpse.Mvc4.dll
+C:\Users\Dragan\Documents\Visual Studio 2012\Projects\MyMusicList\MyMusicList\bin\MyMusicList.dll.config
+C:\Users\Dragan\Documents\Visual Studio 2012\Projects\MyMusicList\MyMusicList\bin\EPPlus.dll
+C:\Users\Dragan\Documents\Visual Studio 2012\Projects\MyMusicList\MyMusicList\bin\EPPlus.xml

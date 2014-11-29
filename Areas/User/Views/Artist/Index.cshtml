@@ -22,7 +22,7 @@
             </div>
 
             <div style="display:inline-block; float:right;">
-                <input type="text" placeholder="Search . . . " class="m-wrap large" name="search" value = "@search">
+                <input id="txtSearchArtists" type="text" placeholder="Search . . . " class="m-wrap large" name="search" value = "@search">
                 <a class="btn blue" href="#" onclick="SubmitForm();"><i class="icon-search"></i> Search Artist</a>
             </div>
         </div>
@@ -123,7 +123,8 @@
 
         $("#artistsLink").addClass("start").addClass("active");
         $("#artistsLink").find("a").append("<span class='selected'></span>");
-
+        $("#txtSearchArtists").autocomplete({
+            source: "@Url.Action("SearchArtists", "Artist")"        });
     });
 
     function Expand(ID) {

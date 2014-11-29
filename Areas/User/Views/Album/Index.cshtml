@@ -31,7 +31,7 @@
                 </div>
 
                 <div style="display:inline-block; float:right;">
-                    <input type="text" placeholder="Search . . . " class="m-wrap large" name="search" value = "@search">
+                    <input id="txtSearchAlbum" type="text" placeholder="Search . . . " class="m-wrap large" name="search" value = "@search">
                     <a class="btn blue" href="#" onclick="SubmitForm();"><i class="icon-search"></i> Search Albums</a>
                 </div>
             }
@@ -41,14 +41,7 @@
 </div>
 
 <div class="row-fluid">
-    
-   
-    
     <div class="span12">
-
-         
-
-
         <div class="portlet box red">
             <div class="portlet-title">
                 <div class="caption"><i class="icon-reorder"></i>@_artistName Albums</div>
@@ -94,6 +87,10 @@
 
         $("#albumsLink").addClass("start").addClass("active");
         $("#albumsLink").find("a").append("<span class='selected'></span>");
+
+        $("#txtSearchAlbum").autocomplete({
+            source: "@Url.Action("SearchAlbums", "Album", new { artistId = @_artistID})"
+        });
     });
 
     function SubmitForm() {

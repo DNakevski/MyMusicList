@@ -248,3 +248,9 @@ Landscape phone to portrait tablet
     background-color: #f1f1f1  !important;  
   }
 }
+
+
+/*--- CUSTOM STYLES ---*/
+.dashboard-date-range {
+    background-color: #28b779 !important;
+}
